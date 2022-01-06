@@ -9,7 +9,6 @@ import com.example.belablok.model.GameRound
 
 @Dao
 interface GameRoundDao {
-
     @Query("SELECT * FROM gameRounds")
     suspend fun getAll(): List<GameRound>
 

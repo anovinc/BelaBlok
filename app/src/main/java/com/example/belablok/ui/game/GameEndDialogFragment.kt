@@ -41,7 +41,6 @@ class GameEndDialogFragment : DialogFragment() {
             tvFirstTeamScore.text = args.firstTeamScore.toString()
             tvSecondTeamScore.text = args.secondTeamScore.toString()
         }
-
     }
 
     override fun onStart() {
