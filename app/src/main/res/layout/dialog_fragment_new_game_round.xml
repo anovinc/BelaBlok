@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:background="@color/green_500"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/green_500"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textSize="@dimen/text_size_extra_medium"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAlignment="center"
+            android:text="@string/first_team"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/tv_first_team"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:id="@+id/guideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            android:layout_height="wrap_content"></androidx.constraintlayout.widget.Guideline>
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            android:textSize="@dimen/text_size_extra_medium"
+            android:textColor="@color/white"
+            android:text="@string/second_team"
+            android:id="@+id/tv_second_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:textStyle="italic"
+            android:textColorHint="@color/grey"
+            app:layout_constraintEnd_toStartOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_first_team"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_extra_medium"
+            android:inputType="number"
+            android:hint="@string/game"
+            android:id="@+id/et_first_team_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:textStyle="italic"
+            android:hint="@string/game"
+            android:textSize="@dimen/text_size_extra_medium"
+            android:textColorHint="@color/grey"
+            android:textColor="@color/white"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@id/tv_second_team"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            android:id="@+id/et_second_team_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:textAlignment="center"
+            android:textColorHint="@color/grey"
+            android:hint="ukupan broj bodova"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_medium"
+            app:layout_constraintTop_toBottomOf="@id/et_second_team_score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/et_total_game_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="@dimen/margin_small"
+            android:text="@string/enter"
+            android:backgroundTint="@color/green_200"
+            app:layout_constraintTop_toBottomOf="@id/et_total_game_score"
+            android:id="@+id/btn_enter_new_round"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

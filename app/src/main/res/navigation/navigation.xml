@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation">
+
+    <fragment
+        android:id="@+id/userLoginFragment"
+        android:name="com.example.belablok.ui.authentication.UserSignUpFragment"
+        android:label="UserAuthenticationFragment" >
+        <action
+            android:id="@+id/action_userLoginFragment_to_drawerHostFragment"
+            app:destination="@id/drawerHostFragment"
+            app:popUpTo="@id/userLoginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_userRegistrationFragment"
+            app:destination="@id/userRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/drawerHostFragment"
+        android:name="com.example.belablok.ui.menu.DrawerHostFragment"
+        android:label="DrawerHostFragment" >
+
+        <action
+            android:id="@+id/action_drawerHostFragment_to_playersEntryFragment"
+            app:destination="@id/playersEntryFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_drawerHostFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment"
+            app:popUpTo="@id/drawerHostFragment" />
+        <action
+            android:id="@+id/action_drawerHostFragment_to_userSignOutDialogFragment"
+            app:destination="@id/userSignOutDialogFragment" />
+        <action
+            android:id="@+id/action_drawerHostFragment_to_gameMainFragment"
+            app:destination="@id/gameMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playersEntryFragment"
+        android:name="com.example.belablok.ui.players.PlayersEntryFragment"
+        android:label="PlayersEntryFragment" >
+        <action
+            android:id="@+id/action_playersEntryFragment_to_gameMainFragment"
+            app:destination="@id/gameMainFragment"
+            app:popUpTo="@id/playersEntryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameMainFragment"
+        android:name="com.example.belablok.ui.game.GameMainFragment"
+        android:label="GameMainFragment" >
+        <argument
+            android:name="game_end_count"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gameMainFragment_to_newGameRoundDialogFragment"
+            app:destination="@id/newGameRoundDialogFragment" />
+        <argument
+            android:name="first_dealer"
+            app:argType="integer" />
+    </fragment>
+    <dialog
+        android:id="@+id/newGameRoundDialogFragment"
+        android:name="com.example.belablok.ui.game.NewGameRoundDialogFragment"
+        android:label="NewGameRoundDialogFragment" >
+        <action
+            android:id="@+id/action_newGameRoundDialogFragment_to_gameEndFragment"
+            app:destination="@id/gameEndFragment"
+            app:popUpTo="@id/gameMainFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </dialog>
+    <dialog
+        android:id="@+id/gameEndFragment"
+        android:name="com.example.belablok.ui.game.GameEndDialogFragment"
+        android:label="GameEndFragment" >
+        <argument
+            android:name="first_team_score"
+            app:argType="integer" />
+        <argument
+            app:argType="integer"
+            android:name="second_team_score" />
+        <action
+            android:id="@+id/action_gameEndFragment_to_playersEntryFragment"
+            app:destination="@id/playersEntryFragment"
+            app:popUpTo="@id/playersEntryFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/userRegistrationFragment"
+        android:name="com.example.belablok.ui.authentication.UserRegistrationFragment"
+        android:label="UserRegistrationFragment" >
+        <action
+            android:id="@+id/action_userRegistrationFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/userSignOutDialogFragment"
+        android:name="com.example.belablok.ui.authentication.UserSignOutDialogFragment"
+        android:label="UserSignOutDialogFragment" >
+        <action
+            android:id="@+id/action_userSignOutDialogFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment"
+            app:popUpTo="@id/userSignOutDialogFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+
+</navigation>

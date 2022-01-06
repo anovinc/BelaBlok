@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <TextView
+        android:id="@+id/tv_enter_players"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:text="@string/enter_player_names"
+        android:textColor="@color/green_500"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_player1"
+        android:layout_width="wrap_content"
+        android:hint="@string/player1"
+        android:textColorHint="@color/green_500"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:textColor="@color/green_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_enter_players" />
+
+    <EditText
+        android:id="@+id/et_player2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/player2"
+        android:textColorHint="@color/green_500"
+        android:textColor="@color/green_500"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_player1" />
+
+    <EditText
+        android:id="@+id/et_player3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/player3"
+        android:textColorHint="@color/green_500"
+        android:textColor="@color/green_500"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_player4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/player4"
+        android:textColorHint="@color/green_500"
+        android:textColor="@color/green_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical"
+        app:layout_constraintTop_toBottomOf="@id/et_player1" />
+
+    <TextView
+        android:id="@+id/tv_first_dealer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:text="@string/who_is_first_dealing"
+        android:textColor="@color/green_500"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal" />
+
+    <RadioGroup
+        android:id="@+id/rg_dealer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_first_dealer">
+
+        <RadioButton
+            android:id="@+id/rbtn_player1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green_500" />
+
+        <RadioButton
+            android:id="@+id/rbtn_player2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green_500" />
+
+        <RadioButton
+            android:id="@+id/rbtn_player3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green_500" />
+
+        <RadioButton
+            android:id="@+id/rbtn_player4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green_500" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_game_ending_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/playing_until"
+        android:textColor="@color/green_500"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rg_game_ending_count"
+        app:layout_constraintTop_toBottomOf="@id/rg_dealer" />
+
+    <RadioGroup
+        android:id="@+id/rg_game_ending_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/btn_start"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_game_ending_count">
+
+        <RadioButton
+            android:id="@+id/rbtn_501"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_501"
+            android:textColor="@color/green_500" />
+
+        <RadioButton
+            android:id="@+id/rbtn_701"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_701"
+            android:textColor="@color/green_500" />
+
+        <RadioButton
+            android:id="@+id/rbtn_1001"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1001"
+            android:textColor="@color/green_500" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:text="@string/start"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

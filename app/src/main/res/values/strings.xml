@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Bela Blok</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="username">korisničko ime</string>
+    <string name="password">lozinka</string>
+    <string name="register_now">Nemaš račun? Registriraj se</string>
+    <string name="skip">Preskoči</string>
+    <string name="login">Prijavi se</string>
+    <string name="testing">pravila hgahghaghahgahghahgahgahghahgahghah
+        /n
+        /nhgsahghaghahghsahg
+        hasfhhsahgsahghashga
+        hgahghsahgahghaagh
+        gahgshaghahghshga
+        gahghsahgahsghashgsahgah
+        hgashghashgshahgahsghhas
+        hgsahghsaghsahgsahgsahgha
+        hgsahhgashghahgsahghsahghashgahsgha
+        hgsahgahshghahgsahghsahagshgahgs
+        ahghahghahgah</string>
+    <string name="new_game">Nova igra</string>
+    <string name="continue_game">Nastavi</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="rules">Pravila</string>
+    <string name="game">Igra</string>
+    <string name="player1">(Igrač 1)</string>
+    <string name="player2">(Igrač 2)</string>
+    <string name="player3">(Igrač 3)</string>
+    <string name="player4">(Igrač 4)</string>
+    <string name="who_is_first_dealing">Tko prvi dijeli?</string>
+    <string name="enter_player_names">Unesite imena igrača:</string>
+    <string name="playing_until">Igra je do:</string>
+    <string name="_501">501</string>
+    <string name="_701">701</string>
+    <string name="_1001">1001</string>
+    <string name="start">Započni</string>
+    <string name="first_team">MI</string>
+    <string name="second_team">VI</string>
+    <string name="new_round">Novi unos</string>
+    <string name="dealer">Dijelitelj:</string>
+    <string name="bonus_score">Zvanje</string>
+    <string name="enter">Unesi</string>
+    <string name="_20">+20</string>
+    <string name="_20_minus">-20</string>
+
+</resources>
