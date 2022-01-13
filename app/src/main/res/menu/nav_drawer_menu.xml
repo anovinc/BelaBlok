@@ -4,6 +4,9 @@
     <item
         android:id="@+id/gameSelectionFragment"
         android:title="@string/game" />
+    <item
+        android:id="@+id/aa"
+        android:title="Naslovnica" />
 
     <item
         android:id="@+id/rulesFragment"
@@ -11,10 +14,10 @@
 
     <item
         android:id="@+id/signOut"
-        android:title="Odjavi se" />
+        android:title="Odjava" />
 
     <item
         android:id="@+id/login"
-        android:title="Prijavi se" />
+        android:title="Prijava" />
 
 </menu>

@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class GameEndViewModel(
     private val gameRoundRepository: GameRoundRepository,
-    private val playersRepository: PlayersRepository
+    private val playersRepository: PlayersRepository,
 ) : ViewModel() {
 
     fun clearList() {
@@ -18,7 +18,7 @@ class GameEndViewModel(
     }
 
     fun clearPlayers() {
-        playersRepository.clearPlayers()
+            playersRepository.clearPlayers()
     }
 
 }

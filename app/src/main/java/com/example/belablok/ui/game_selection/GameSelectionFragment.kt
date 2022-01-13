@@ -42,7 +42,6 @@ class GameSelectionFragment : BaseFragment<FragmentGameSelectionBinding>() {
     }
 
     override fun onPostViewCreated() {
-        Toast.makeText(context, PrefsManager().getUser(), Toast.LENGTH_SHORT).show()
         initListeners()
         hideContinueButton()
     }

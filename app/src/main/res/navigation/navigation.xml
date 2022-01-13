@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_drawerHostFragment_to_gameMainFragment"
             app:destination="@id/gameMainFragment" />
+        <action
+            android:id="@+id/action_drawerHostFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/playersEntryFragment"
@@ -108,5 +111,9 @@
             app:popUpTo="@id/userSignOutDialogFragment"
             app:popUpToInclusive="true" />
     </dialog>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.belablok.ui.ProfileFragment"
+        android:label="ProfileFragment" />
 
 </navigation>
