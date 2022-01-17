@@ -114,6 +114,14 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.belablok.ui.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_newPostDialog"
+            app:destination="@id/newPostDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/newPostDialog"
+        android:name="com.example.belablok.NewPostDialog"
+        android:label="NewPostDialog" />
 
 </navigation>

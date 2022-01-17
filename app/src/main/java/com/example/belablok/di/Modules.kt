@@ -1,14 +1,16 @@
 package com.example.belablok.di
 
 import androidx.room.Room
-import com.example.belablok.BelaBlokDatabase
-import com.example.belablok.GameRoundDao
+import com.example.belablok.*
 import com.example.belablok.common.DATABASE_NAME
 import com.example.belablok.repositories.AuthenticationRepository
 import com.example.belablok.repositories.GameRoundRepository
 import com.example.belablok.repositories.PlayersRepository
+import com.example.belablok.repositories.PostsRepository
 import com.example.belablok.ui.viewmodels.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -33,6 +35,10 @@ val viewModelModule = module {
 
     viewModel { GameSelectionViewModel(get()) }
 
+    viewModel { NewPostViewModel(get()) }
+
+    viewModel { ProfileViewModel(get()) }
+
 }
 
 val repositoryModule = module {
@@ -41,11 +47,16 @@ val repositoryModule = module {
     single { AuthenticationRepository(get()) }
 
     single { PlayersRepository() }
+
+    single { PostsRepository(get()) }
 }
 
 val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
+
+    single { FirebaseStorage.getInstance() }
 }
+
 
 val roomDatabaseModule = module {
     single {
