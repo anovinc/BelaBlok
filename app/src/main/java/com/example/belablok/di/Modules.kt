@@ -9,6 +9,9 @@ import com.example.belablok.repositories.PlayersRepository
 import com.example.belablok.repositories.PostsRepository
 import com.example.belablok.ui.viewmodels.*
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import org.koin.android.ext.koin.androidContext
@@ -48,13 +51,15 @@ val repositoryModule = module {
 
     single { PlayersRepository() }
 
-    single { PostsRepository(get()) }
+    single { PostsRepository(get(), get()) }
 }
 
 val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
 
     single { FirebaseStorage.getInstance() }
+
+    single { FirebaseFirestore.getInstance() }
 }
 
 

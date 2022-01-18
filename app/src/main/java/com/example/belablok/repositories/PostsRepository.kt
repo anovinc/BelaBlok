@@ -2,46 +2,63 @@ package com.example.belablok.repositories
 
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.belablok.PrefsManager
 import com.example.belablok.model.Post
-import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ListResult
-import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 import kotlin.random.Random
 
 
-class PostsRepository(private val storage: FirebaseStorage) {
+class PostsRepository(
+    storage: FirebaseStorage,
+    private val database: FirebaseFirestore
+) {
 
     private val initialList: MutableList<Post> = mutableListOf()
     private val _userPosts = MutableLiveData<List<Post>>(initialList)
     val userPosts: LiveData<List<Post>>
         get() = _userPosts
-    private val userName = PrefsManager().getUser()
-
+    private var reference = storage.reference
 
     suspend fun uploadImage(fileUri: Uri) {
         withContext(Dispatchers.IO) {
+            val userName = PrefsManager().getUser() ?: ""
             val fileName = userName.plus("@" + Random.nextInt(0, 10000).toString() + ".jpg")
             if (fileUri != null) {
 
-                var uploadTask = storage.reference.child("images/$fileName").putFile(fileUri)
+                val uploadTask = reference.child("images/$fileName").putFile(fileUri)
+
 
                 uploadTask.addOnFailureListener {
 
                 }.addOnSuccessListener {
-
+                    val url = it.storage.downloadUrl.toString()
+                    val map = hashMapOf(
+                        "username" to userName,
+                        "url" to url
+                    )
+                    database.collection("posts").add(map).addOnSuccessListener {
+                        Log.i("tager", "uploadImage:uspjesno ")
+                    }
                 }
             }
         }
     }
 
-
-
-
+   /* suspend fun getImages() {
+        withContext(Dispatchers.IO) {
+            val userName = PrefsManager().getUser() ?: ""
+            database.collection("posts").whereEqualTo("username",userName).get().addOnSuccessListener {
+                for(document in it) {
+                    initialList.add(Post())
+                }
+            }
+        }
+    }
+    */
 }
