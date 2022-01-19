@@ -11,6 +11,7 @@ class ProfileViewModel(private val postsRepository: PostsRepository) : ViewModel
 
     fun getUserPosts() {
         viewModelScope.launch {
+            postsRepository.getImages()
         }
     }
 }

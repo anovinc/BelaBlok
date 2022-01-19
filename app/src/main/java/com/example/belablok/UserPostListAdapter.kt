@@ -11,9 +11,9 @@ class UserPostListAdapter: RecyclerView.Adapter<UserPostViewHolder>() {
 
     private val userPosts: MutableList<Post> = mutableListOf()
 
-    fun refreshData(userPostsList: List<Post>) {
+    fun refreshData(userPosts: List<Post>) {
         this.userPosts.clear()
-        this.userPosts.addAll(userPostsList)
+        this.userPosts.addAll(userPosts)
         this.notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserPostViewHolder {

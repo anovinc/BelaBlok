@@ -1,9 +1,7 @@
 package com.example.belablok.ui
 
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +22,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentProfileBinding
         get() = FragmentProfileBinding::inflate
 
+
     override fun onPostViewCreated() {
         val user = PrefsManager().getUser()?.replaceFirstChar { it.titlecase() }
         binding.tvUsername.text = user
@@ -41,11 +40,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun observePosts() {
-        viewmodel.userPosts.observe(viewLifecycleOwner) {
-            userPostsAdapter.refreshData(it)
+        viewmodel.getUserPosts()
+        viewmodel.userPosts.observe(viewLifecycleOwner) { posts->
+            userPostsAdapter.refreshData(posts)
+            Log.i("adapter", "observePosts: $posts")
         }
     }
-
-
 
 }

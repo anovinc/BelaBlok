@@ -20,9 +20,11 @@ class PostsRepository(
 ) {
 
     private val initialList: MutableList<Post> = mutableListOf()
-    private val _userPosts = MutableLiveData<List<Post>>(initialList)
+
+    private val _userPosts = MutableLiveData<List<Post>>()
     val userPosts: LiveData<List<Post>>
         get() = _userPosts
+
     private var reference = storage.reference
 
     suspend fun uploadImage(fileUri: Uri) {
@@ -30,17 +32,16 @@ class PostsRepository(
             val userName = PrefsManager().getUser() ?: ""
             val fileName = userName.plus("@" + Random.nextInt(0, 10000).toString() + ".jpg")
             if (fileUri != null) {
-
                 val uploadTask = reference.child("images/$fileName").putFile(fileUri)
-
-
                 uploadTask.addOnFailureListener {
 
                 }.addOnSuccessListener {
-                    val url = it.storage.downloadUrl.toString()
+                    val url = it.storage.downloadUrl
+                    while (!url.isComplete) {
+                    }
                     val map = hashMapOf(
                         "username" to userName,
-                        "url" to url
+                        "url" to url.result.toString()
                     )
                     database.collection("posts").add(map).addOnSuccessListener {
                         Log.i("tager", "uploadImage:uspjesno ")
@@ -50,15 +51,24 @@ class PostsRepository(
         }
     }
 
-   /* suspend fun getImages() {
+    suspend fun getImages() {
         withContext(Dispatchers.IO) {
             val userName = PrefsManager().getUser() ?: ""
-            database.collection("posts").whereEqualTo("username",userName).get().addOnSuccessListener {
-                for(document in it) {
-                    initialList.add(Post())
+            database.collection("posts").whereEqualTo("username", userName).get()
+                .addOnSuccessListener {
+                    initialList.clear()
+                    for (document in it) {
+                        initialList.add(
+                            Post(
+                                document.get("username").toString(),
+                                document.get("url").toString()
+                            )
+                        )
+                    }
                 }
-            }
+            _userPosts.postValue(initialList)
         }
+        Log.i("posts", "getImages: ${userPosts.value}")
     }
-    */
+
 }
