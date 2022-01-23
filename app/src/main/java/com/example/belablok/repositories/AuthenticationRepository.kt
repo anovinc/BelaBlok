@@ -1,6 +1,6 @@
 package com.example.belablok.repositories
 
-import com.example.belablok.PrefsManager
+import com.example.belablok.data.PrefsManager
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

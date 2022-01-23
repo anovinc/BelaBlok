@@ -13,7 +13,10 @@
         android:id="@+id/rulesFragment"
         android:name="com.example.belablok.ui.rules.RulesFragment"
         android:label="@string/rules" />
-
+    <fragment
+        android:id="@+id/postsPageFragment"
+        android:name="com.example.belablok.ui.posts.PostsPageFragment"
+        android:label="@string/posts_page" />
 
 
 </navigation>

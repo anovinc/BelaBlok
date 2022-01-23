@@ -5,7 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginBottom="@dimen/margin_medium"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         android:layout_width="match_parent"
+        app:cardMaxElevation="12dp"
         android:orientation="horizontal"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/guideline"
@@ -14,20 +18,20 @@
         <ImageView
             android:id="@+id/tv_person"
             android:src="@drawable/ic_baseline_person_24"
-            android:layout_width="80dp"
-            android:layout_height="80dp"></ImageView>
+            android:layout_width="50dp"
+            android:layout_height="50dp"></ImageView>
 
         <TextView
             android:textAllCaps="true"
             android:id="@+id/tv_post"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginStart="100dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginStart="80dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></TextView>4
 
         <ImageView
             android:id="@+id/iv_post"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ImageView>
     </androidx.cardview.widget.CardView>

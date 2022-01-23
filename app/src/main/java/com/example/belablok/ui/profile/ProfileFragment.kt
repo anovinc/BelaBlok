@@ -1,14 +1,14 @@
-package com.example.belablok.ui
+package com.example.belablok.ui.profile
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.belablok.PrefsManager
-import com.example.belablok.ProfileViewModel
+import com.example.belablok.data.PrefsManager
+import com.example.belablok.ui.viewmodels.ProfileViewModel
 import com.example.belablok.R
-import com.example.belablok.UserPostListAdapter
+import com.example.belablok.ui.profile.adapters.UserPostListAdapter
 import com.example.belablok.databinding.FragmentProfileBinding
 import com.example.belablok.extensions.onClick
 import com.example.belablok.ui.base.BaseFragment

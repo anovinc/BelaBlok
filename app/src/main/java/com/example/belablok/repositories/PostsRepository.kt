@@ -3,14 +3,15 @@ package com.example.belablok.repositories
 
 import android.net.Uri
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.example.belablok.PrefsManager
+import com.example.belablok.data.PrefsManager
 import com.example.belablok.model.Post
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 import kotlin.random.Random
 
 
@@ -18,12 +19,6 @@ class PostsRepository(
     storage: FirebaseStorage,
     private val database: FirebaseFirestore
 ) {
-
-    private val initialList: MutableList<Post> = mutableListOf()
-
-    private val _userPosts = MutableLiveData<List<Post>>()
-    val userPosts: LiveData<List<Post>>
-        get() = _userPosts
 
     private var reference = storage.reference
 
@@ -51,24 +46,48 @@ class PostsRepository(
         }
     }
 
-    suspend fun getImages() {
-        withContext(Dispatchers.IO) {
+   suspend fun getUserPosts() = withContext(Dispatchers.IO) {
+       suspendCoroutine<List<Post>> { continuation ->
+           val userName = PrefsManager().getUser() ?: ""
+           database.collection("posts").whereEqualTo("username", userName).get()
+               .addOnFailureListener {
+                   continuation.resumeWithException(it)
+               }
+               .addOnSuccessListener {
+                   val posts = arrayListOf<Post>()
+                   for (document in it) {
+                       posts.add(
+                           Post(
+                               document.get("username").toString(),
+                               document.get("url").toString()
+                           )
+                       )
+                   }
+                   continuation.resume(posts)
+               }
+       }
+   }
+
+    suspend fun getAllPosts() = withContext(Dispatchers.IO) {
+        suspendCoroutine<List<Post>> { continuation ->
             val userName = PrefsManager().getUser() ?: ""
-            database.collection("posts").whereEqualTo("username", userName).get()
+            database.collection("posts").get()
+                .addOnFailureListener {
+                    continuation.resumeWithException(it)
+                }
                 .addOnSuccessListener {
-                    initialList.clear()
+                    val posts = arrayListOf<Post>()
                     for (document in it) {
-                        initialList.add(
+                        posts.add(
                             Post(
                                 document.get("username").toString(),
                                 document.get("url").toString()
                             )
                         )
                     }
+                    continuation.resume(posts)
                 }
-            _userPosts.postValue(initialList)
         }
-        Log.i("posts", "getImages: ${userPosts.value}")
     }
 
 }

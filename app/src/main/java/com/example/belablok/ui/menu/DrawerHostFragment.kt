@@ -8,11 +8,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.example.belablok.PrefsManager
-import com.example.belablok.R
+import com.example.belablok.data.PrefsManager
 import com.example.belablok.R.id.*
 import com.example.belablok.databinding.FragmentDrawerHostBinding
 import com.example.belablok.extensions.invisible
@@ -81,6 +79,14 @@ class DrawerHostFragment : BaseFragment<FragmentDrawerHostBinding>() {
                     goToRules()
                     true
                 }
+                postsPageFragment -> {
+                    goToPostsPage()
+                    true
+                }
+                profileFragment -> {
+                    goToProfile()
+                    true
+                }
                 else -> false
             }
 
@@ -94,6 +100,12 @@ class DrawerHostFragment : BaseFragment<FragmentDrawerHostBinding>() {
         drawerLayout.closeDrawer(GravityCompat.START)
     }
 
+    private fun goToPostsPage() {
+        val navController = activity?.findNavController(nav_host_drawer_fragment)
+        navController?.navigate(postsPageFragment)
+        drawerLayout.closeDrawer(GravityCompat.START)
+    }
+
     private fun goToSignOut() {
         val navController = activity?.findNavController(nav_host_fragment)
         navController?.navigate(action_drawerHostFragment_to_userSignOutDialogFragment)
@@ -102,7 +114,8 @@ class DrawerHostFragment : BaseFragment<FragmentDrawerHostBinding>() {
     private fun isUserLoggedIn() {
         if (PrefsManager().getUser().isNullOrEmpty()) {
             hideMenuItem(signOut)
-            hideMenuItem(aa)
+            hideMenuItem(postsPageFragment)
+            hideMenuItem(profileFragment)
         } else {
             showUsername()
             hideMenuItem(login)

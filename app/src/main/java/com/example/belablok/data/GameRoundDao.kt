@@ -1,4 +1,4 @@
-package com.example.belablok
+package com.example.belablok.data
 
 import androidx.room.Dao
 import androidx.room.Insert

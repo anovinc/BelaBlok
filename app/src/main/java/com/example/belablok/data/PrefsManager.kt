@@ -1,7 +1,8 @@
-package com.example.belablok
+package com.example.belablok.data
 
 
 import android.content.Context
+import com.example.belablok.App
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

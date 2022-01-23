@@ -1,4 +1,4 @@
-package com.example.belablok
+package com.example.belablok.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,7 @@ import com.example.belablok.databinding.DialogFragmentNewPostBinding
 import com.example.belablok.extensions.invisble
 import com.example.belablok.extensions.onClick
 import com.example.belablok.extensions.visible
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.example.belablok.ui.viewmodels.NewPostViewModel
 import org.koin.android.ext.android.inject
 
 class NewPostDialog : DialogFragment() {

@@ -5,7 +5,10 @@
         android:id="@+id/gameSelectionFragment"
         android:title="@string/game" />
     <item
-        android:id="@+id/aa"
+        android:id="@+id/profileFragment"
+        android:title="Moj profil" />
+    <item
+        android:id="@+id/postsPageFragment"
         android:title="Naslovnica" />
 
     <item

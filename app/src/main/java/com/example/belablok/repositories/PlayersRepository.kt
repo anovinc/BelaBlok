@@ -1,6 +1,6 @@
 package com.example.belablok.repositories
 
-import com.example.belablok.PrefsManager
+import com.example.belablok.data.PrefsManager
 
 class PlayersRepository {
 

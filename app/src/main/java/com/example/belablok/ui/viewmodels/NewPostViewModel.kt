@@ -1,4 +1,4 @@
-package com.example.belablok
+package com.example.belablok.ui.viewmodels
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
