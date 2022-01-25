@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/green_500"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_delete_post_desc"
+        android:text="Jeste li sigurni da želite obrisati objavu?"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_small"
+        android:textSize="32sp"></TextView>
+
+    <TextView
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_cancel"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_delete_post_desc"
+        android:text="ODUSTANI"
+        app:layout_constraintEnd_toStartOf="@id/tv_accept"
+        android:textColor="@color/white"
+        android:textSize="18sp"></TextView>
+
+    <TextView
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_accept"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_delete_post_desc"
+        android:text="NASTAVI"
+        app:layout_constraintStart_toEndOf="@id/tv_cancel"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"></TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,8 @@ class PrefsManager {
 
     private val playersEditor = sharedPreferences.edit()
 
+    private val postsEditor = sharedPreferences.edit()
+
   /*  private val firstTeamWins = sharedPreferences.edit()
 
     private val secondTeamWins = sharedPreferences.edit()
@@ -28,6 +30,13 @@ class PrefsManager {
     }
 
     fun getUser() = sharedPreferences.getString("user","")
+
+    fun savePost(num: Int) {
+        postsEditor.putInt("posts", num)
+        postsEditor.apply()
+    }
+
+    fun getPostsNum() = sharedPreferences.getInt("posts",0)
 
     fun setLists(list:List<String>){
         val gson = Gson()

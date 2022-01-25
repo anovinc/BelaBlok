@@ -118,10 +118,21 @@
         <action
             android:id="@+id/action_profileFragment_to_newPostDialog"
             app:destination="@id/newPostDialog" />
+        <action
+            android:id="@+id/action_profileFragment_to_deletePostDialog"
+            app:destination="@id/deletePostDialog" />
     </fragment>
     <dialog
         android:id="@+id/newPostDialog"
         android:name="com.example.belablok.ui.profile.NewPostDialog"
         android:label="NewPostDialog" />
+    <dialog
+        android:id="@+id/deletePostDialog"
+        android:name="com.example.belablok.ui.profile.DeletePostDialog"
+        android:label="DeletePostDialog" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </dialog>
 
 </navigation>

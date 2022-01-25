@@ -42,6 +42,9 @@ val viewModelModule = module {
 
     viewModel { PostsPageViewModel(get()) }
 
+    viewModel { DeletePostViewModel(get()) }
+
+
 
 }
 
