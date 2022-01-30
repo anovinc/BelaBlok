@@ -40,6 +40,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             findNavController().navigate(R.id.action_profileFragment_to_newPostDialog)
         }
         setupRecycler()
+        viewmodel.getUserPosts()
         observePosts()
     }
     private fun setupRecycler() {
@@ -50,7 +51,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun observePosts() {
-        viewmodel.getUserPosts()
         viewmodel.userPosts.observe(viewLifecycleOwner) { posts->
             userPostsAdapter.refreshData(posts)
             Log.i("adapter", "observePosts: $posts")

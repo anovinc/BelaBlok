@@ -125,14 +125,24 @@
     <dialog
         android:id="@+id/newPostDialog"
         android:name="com.example.belablok.ui.profile.NewPostDialog"
-        android:label="NewPostDialog" />
+        android:label="NewPostDialog" >
+        <action
+            android:id="@+id/action_newPostDialog_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/drawerHostFragment" />
+    </dialog>
     <dialog
         android:id="@+id/deletePostDialog"
         android:name="com.example.belablok.ui.profile.DeletePostDialog"
         android:label="DeletePostDialog" >
         <argument
             android:name="id"
-            app:argType="integer" />
+            app:argType="float" />
+        <action
+            android:id="@+id/action_deletePostDialog_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/drawerHostFragment"
+            app:popUpToInclusive="false" />
     </dialog>
 
 </navigation>

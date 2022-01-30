@@ -3,7 +3,7 @@ package com.example.belablok.ui.posts.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.belablok.databinding.ItemUserPostBinding
+import com.example.belablok.databinding.ItemUsersPostBinding
 import com.example.belablok.model.Post
 
 
@@ -19,7 +19,7 @@ class PostsListAdpater : RecyclerView.Adapter<PostListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostListViewHolder {
         return PostListViewHolder(
-            ItemUserPostBinding.inflate(
+            ItemUsersPostBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
