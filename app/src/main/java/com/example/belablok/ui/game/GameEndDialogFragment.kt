@@ -29,8 +29,8 @@ class GameEndDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             btnNewGame.onClick {
-                viewmodel.clearList()
                 viewmodel.clearPlayers()
+                viewmodel.clearList()
                 findNavController().navigate(R.id.action_gameEndFragment_to_playersEntryFragment)
                 dismiss()
             }

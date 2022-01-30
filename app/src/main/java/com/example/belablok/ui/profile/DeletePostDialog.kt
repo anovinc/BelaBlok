@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.belablok.R
 import com.example.belablok.databinding.DialogDeletePostBinding
 import com.example.belablok.extensions.onClick
 import com.example.belablok.ui.viewmodels.DeletePostViewModel
 import org.koin.android.ext.android.inject
 
 class DeletePostDialog : DialogFragment() {
-    private val viewmodel : DeletePostViewModel by inject()
+    private val viewmodel: DeletePostViewModel by inject()
     private lateinit var binding: DialogDeletePostBinding
     private val args: DeletePostDialogArgs by navArgs()
 
@@ -29,19 +31,27 @@ class DeletePostDialog : DialogFragment() {
         binding.apply {
             tvAccept.onClick {
                 deletePost(args.id)
-                dismiss()
+                goBack()
             }
             tvCancel.onClick {
                 dismiss()
             }
         }
     }
+
+    private fun goBack() {
+        findNavController().navigate(R.id.action_deletePostDialog_to_profileFragment)
+    }
+
     override fun onStart() {
         super.onStart()
         isCancelable = false
     }
-    private fun deletePost(id: Int) {
+
+    private fun deletePost(id: Float) {
         viewmodel.deletePost(id)
     }
+
+
 
 }

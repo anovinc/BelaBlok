@@ -7,9 +7,9 @@ import com.example.belablok.repositories.PostsRepository
 import kotlinx.coroutines.launch
 
 class NewPostViewModel(private val postsRepository: PostsRepository) : ViewModel() {
-     fun upload(fileUrl: Uri) {
+     fun upload(fileUrl: Uri, onResult: (Boolean) -> Unit) {
         viewModelScope.launch {
-            postsRepository.uploadImage(fileUrl)
+            postsRepository.uploadImage(fileUrl, onResult)
         }
     }
 }
