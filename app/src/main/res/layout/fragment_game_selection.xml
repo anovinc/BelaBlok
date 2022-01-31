@@ -21,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:visibility="invisible"
         android:id="@+id/btn_continue"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"

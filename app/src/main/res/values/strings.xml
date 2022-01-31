@@ -6,23 +6,12 @@
     <string name="register_now">Nemaš račun? Registriraj se</string>
     <string name="skip">Preskoči</string>
     <string name="login">Prijavi se</string>
-    <string name="testing">pravila hgahghaghahgahghahgahgahghahgahghah
-        /n
-        /nhgsahghaghahghsahg
-        hasfhhsahgsahghashga
-        hgahghsahgahghaagh
-        gahgshaghahghshga
-        gahghsahgahsghashgsahgah
-        hgashghashgshahgahsghhas
-        hgsahghsaghsahgsahgsahgha
-        hgsahhgashghahgsahghsahghashgahsgha
-        hgsahgahshghahgsahghsahagshgahgs
-        ahghahghahgah</string>
+    <string name="testing">Aplikacija je napravljena u svrhu kolegija na fakultetu gdje su primjenjene stvari koju se se naučile na fakultetu, ali i nove stvari i znanja!</string>
     <string name="new_game">Nova igra</string>
     <string name="continue_game">Nastavi</string>
     <string name="open">open</string>
     <string name="close">close</string>
-    <string name="rules">Pravila</string>
+    <string name="about">O aplikaciji</string>
     <string name="game">Igra</string>
     <string name="player1">(Igrač 1)</string>
     <string name="player2">(Igrač 2)</string>

@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.belablok.R
+import com.example.belablok.data.PrefsManager
 import com.example.belablok.databinding.DialogFragmentGameEndBinding
 import com.example.belablok.extensions.onClick
 import com.example.belablok.ui.viewmodels.GameEndViewModel
