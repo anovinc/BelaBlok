@@ -1,5 +1,6 @@
 package com.example.belablok.ui.game
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -7,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.belablok.R
+import com.example.belablok.data.PrefsManager
 import com.example.belablok.ui.game.adapters.GameRoundListAdapter
 import com.example.belablok.databinding.FragmentGameMainBinding
 import com.example.belablok.extensions.onClick
@@ -67,6 +69,7 @@ class GameMainFragment : BaseFragment<FragmentGameMainBinding>() {
             gameRoundListAdapter.refreshData(gameRoundList)
             if (gameRoundList.isEmpty()) viewmodel.setCurrentDealer()
             else if (gameRoundList.size + 1 != viewmodel.listSize) viewmodel.changeCurrentDealer()
+            //Log.i("lista", "observeGameRounds: "+PrefsManager().getList() + "\n" + PrefsManager().getDealer()+"\n" + PrefsManager().getFirstTeamWins() +"   "+ PrefsManager().getSecondTeamWins())
             with(binding) {
                 if (viewmodel.hasGameEnded(getGameEndCount())) goToEndGameScreen()
 
@@ -107,6 +110,8 @@ class GameMainFragment : BaseFragment<FragmentGameMainBinding>() {
             GameMainFragmentDirections.actionGameMainFragmentToNewGameRoundDialogFragment(gameRound.id)
         findNavController().navigate(action)
     }
+
+
 
 }
 

@@ -20,7 +20,7 @@ class PlayersRepository {
         playersList.clear()
     }
 
-    fun setup() {
+    private fun setup() {
         playersList.addAll(PrefsManager().getList())
     }
 }

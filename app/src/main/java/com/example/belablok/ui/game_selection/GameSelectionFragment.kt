@@ -23,10 +23,11 @@ class GameSelectionFragment : BaseFragment<FragmentGameSelectionBinding>() {
         navController?.navigate(R.id.action_drawerHostFragment_to_playersEntryFragment)
     }
 
-    private fun continueGame() {
+   /* private fun continueGame() {
+        viewmodel.setData(PrefsManager().getList())
         val navController = activity?.findNavController(R.id.nav_host_fragment)
         navController?.navigate(R.id.action_drawerHostFragment_to_gameMainFragment)
-    }
+    }*/
 
     private fun initListeners() {
         binding.apply {
@@ -34,9 +35,7 @@ class GameSelectionFragment : BaseFragment<FragmentGameSelectionBinding>() {
                 clearData()
                 startGame()
             }
-            btnContinue.onClick {
-               // continueGame()
-            }
+
         }
     }
 

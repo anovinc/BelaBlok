@@ -3,6 +3,7 @@ package com.example.belablok.ui.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.belablok.data.PrefsManager
 import com.example.belablok.repositories.GameRoundRepository
 import com.example.belablok.repositories.PlayersRepository
 import com.example.belablok.model.GameViewState
@@ -49,11 +50,11 @@ class GameMainViewModel(firstPosition: Int,gameRoundRepository: GameRoundReposit
         setCurrentDealer()
     }
 
-    fun increaseFirstTeamWins() {
+    private fun increaseFirstTeamWins() {
        _gameViewStateLiveData.value?.increaseNumOfFirstTeamWins()
     }
 
-    fun increaseSecondTeamWins() {
+    private fun increaseSecondTeamWins() {
         _gameViewStateLiveData.value?.increaseNumOfSecondTeamWins()
     }
 
@@ -64,7 +65,6 @@ class GameMainViewModel(firstPosition: Int,gameRoundRepository: GameRoundReposit
         if(getFirstTeamTotalScore() > getSecondTeamTotalScore()) increaseFirstTeamWins()
         else increaseSecondTeamWins()
     }
-
 
 }
 
