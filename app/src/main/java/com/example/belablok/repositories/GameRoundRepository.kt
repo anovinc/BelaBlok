@@ -2,7 +2,7 @@ package com.example.belablok.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.belablok.GameRoundDao
+import com.example.belablok.data.GameRoundDao
 import com.example.belablok.model.GameRound
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

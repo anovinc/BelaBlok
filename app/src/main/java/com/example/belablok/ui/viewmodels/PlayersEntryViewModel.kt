@@ -8,8 +8,7 @@ import com.example.belablok.model.PlayerEntryViewState
 import com.example.belablok.common.*
 import com.example.belablok.repositories.PlayersRepository
 
-class PlayersEntryViewModel(playersRepository: PlayersRepository) : ViewModel() {
-    private val players = playersRepository.getPlayers()
+class PlayersEntryViewModel(private val playersRepository: PlayersRepository) : ViewModel() {
     private val _playerEntryViewStateLiveData = MutableLiveData(PlayerEntryViewState(PLAYER_ONE, PLAYER_TWO, PLAYER_THREE, PLAYER_FOUR))
     val playerEntryViewStateLiveData: LiveData<PlayerEntryViewState>
         get() = _playerEntryViewStateLiveData
@@ -31,7 +30,7 @@ class PlayersEntryViewModel(playersRepository: PlayersRepository) : ViewModel() 
             _playerEntryViewStateLiveData.value?.copy(playerFour = if(name.isEmpty()) PLAYER_FOUR else name)
     }
     fun setPlayers(playerList : List<String>) {
-        players.addAll(playerList)
+        playersRepository.setPlayers(playerList)
     }
 
 }

@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_drawerHostFragment_to_gameMainFragment"
             app:destination="@id/gameMainFragment" />
+        <action
+            android:id="@+id/action_drawerHostFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/playersEntryFragment"
@@ -107,6 +110,39 @@
             app:destination="@id/userLoginFragment"
             app:popUpTo="@id/userSignOutDialogFragment"
             app:popUpToInclusive="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.belablok.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_newPostDialog"
+            app:destination="@id/newPostDialog" />
+        <action
+            android:id="@+id/action_profileFragment_to_deletePostDialog"
+            app:destination="@id/deletePostDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/newPostDialog"
+        android:name="com.example.belablok.ui.profile.NewPostDialog"
+        android:label="NewPostDialog" >
+        <action
+            android:id="@+id/action_newPostDialog_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/drawerHostFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/deletePostDialog"
+        android:name="com.example.belablok.ui.profile.DeletePostDialog"
+        android:label="DeletePostDialog" >
+        <argument
+            android:name="id"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_deletePostDialog_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/drawerHostFragment"
+            app:popUpToInclusive="false" />
     </dialog>
 
 </navigation>

@@ -2,9 +2,8 @@ package com.example.belablok.ui.game_selection
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.findNavController
-import com.example.belablok.PrefsManager
+import com.example.belablok.data.PrefsManager
 import com.example.belablok.R
 import com.example.belablok.databinding.FragmentGameSelectionBinding
 import com.example.belablok.extensions.invisble
@@ -42,7 +41,6 @@ class GameSelectionFragment : BaseFragment<FragmentGameSelectionBinding>() {
     }
 
     override fun onPostViewCreated() {
-        Toast.makeText(context, PrefsManager().getUser(), Toast.LENGTH_SHORT).show()
         initListeners()
         hideContinueButton()
     }

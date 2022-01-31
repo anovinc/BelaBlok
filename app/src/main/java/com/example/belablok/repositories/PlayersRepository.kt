@@ -1,5 +1,7 @@
 package com.example.belablok.repositories
 
+import com.example.belablok.data.PrefsManager
+
 class PlayersRepository {
 
     private val playersList = mutableListOf<String>()
@@ -10,9 +12,15 @@ class PlayersRepository {
 
     fun getPlayers() = playersList
     fun setPlayers(players: List<String>) {
-        playersList.addAll(players)
+        PrefsManager().setLists(players)
+        setup()
     }
     fun clearPlayers() {
+        PrefsManager().deletePlayers()
         playersList.clear()
+    }
+
+    fun setup() {
+        playersList.addAll(PrefsManager().getList())
     }
 }

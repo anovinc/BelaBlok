@@ -1,5 +1,6 @@
 package com.example.belablok.model
 
+
 data class PlayerEntryViewState(
     var playerOne: String,
     var playerTwo: String,

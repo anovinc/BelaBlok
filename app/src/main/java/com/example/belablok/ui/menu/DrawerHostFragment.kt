@@ -2,6 +2,7 @@ package com.example.belablok.ui.menu
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -9,10 +10,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.example.belablok.PrefsManager
+import com.example.belablok.data.PrefsManager
 import com.example.belablok.R.id.*
 import com.example.belablok.databinding.FragmentDrawerHostBinding
 import com.example.belablok.extensions.invisible
+import com.example.belablok.extensions.onClick
 import com.example.belablok.ui.base.BaseFragment
 
 class DrawerHostFragment : BaseFragment<FragmentDrawerHostBinding>() {
@@ -30,6 +32,13 @@ class DrawerHostFragment : BaseFragment<FragmentDrawerHostBinding>() {
         setupNavController()
         setupNavigationActions()
         isUserLoggedIn()
+        initializeListeners()
+    }
+
+    private fun initializeListeners() {
+        binding.navView.getHeaderView(0).findViewById<TextView>(tv_username).onClick {
+            goToProfile()
+        }
     }
 
     private fun setupNavigationDrawer() {
@@ -70,6 +79,14 @@ class DrawerHostFragment : BaseFragment<FragmentDrawerHostBinding>() {
                     goToRules()
                     true
                 }
+                postsPageFragment -> {
+                    goToPostsPage()
+                    true
+                }
+                profileFragment -> {
+                    goToProfile()
+                    true
+                }
                 else -> false
             }
 
@@ -83,18 +100,42 @@ class DrawerHostFragment : BaseFragment<FragmentDrawerHostBinding>() {
         drawerLayout.closeDrawer(GravityCompat.START)
     }
 
+    private fun goToPostsPage() {
+        val navController = activity?.findNavController(nav_host_drawer_fragment)
+        navController?.navigate(postsPageFragment)
+        drawerLayout.closeDrawer(GravityCompat.START)
+    }
+
     private fun goToSignOut() {
         val navController = activity?.findNavController(nav_host_fragment)
         navController?.navigate(action_drawerHostFragment_to_userSignOutDialogFragment)
     }
 
     private fun isUserLoggedIn() {
-        if (PrefsManager().getUser().isNullOrEmpty()) hideMenuItem(signOut)
-        else hideMenuItem(login)
+        if (PrefsManager().getUser().isNullOrEmpty()) {
+            hideMenuItem(signOut)
+            hideMenuItem(postsPageFragment)
+            hideMenuItem(profileFragment)
+        } else {
+            showUsername()
+            hideMenuItem(login)
+        }
     }
 
     private fun hideMenuItem(id: Int) {
         val menu = binding.navView.menu
         menu.findItem(id).invisible()
     }
+
+    private fun showUsername() {
+        val user = PrefsManager().getUser()?.replaceFirstChar { it.titlecase() }
+        val header = binding.navView.getHeaderView(0)
+        header.findViewById<TextView>(tv_username).text = user
+    }
+
+    private fun goToProfile() {
+        val navController = activity?.findNavController(nav_host_fragment)
+        navController?.navigate(action_drawerHostFragment_to_profileFragment)
+    }
+
 }

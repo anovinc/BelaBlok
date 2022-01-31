@@ -65,9 +65,6 @@ class GameMainViewModel(firstPosition: Int,gameRoundRepository: GameRoundReposit
         else increaseSecondTeamWins()
     }
 
-    fun getAllData() {
-
-    }
 
 }
 
