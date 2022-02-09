@@ -1,4 +1,4 @@
-package com.example.belablok
+package com.example.belablok.ui.game
 
 import android.os.Bundle
 import android.view.LayoutInflater

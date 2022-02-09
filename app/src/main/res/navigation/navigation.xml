@@ -160,7 +160,7 @@
     </dialog>
     <dialog
         android:id="@+id/confirmationDialog"
-        android:name="com.example.belablok.ConfirmationDialog"
+        android:name="com.example.belablok.ui.game.ConfirmationDialog"
         android:label="ConfirmationDialog" />
 
 </navigation>
