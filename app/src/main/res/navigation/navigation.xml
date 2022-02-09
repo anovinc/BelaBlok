@@ -11,11 +11,14 @@
         <action
             android:id="@+id/action_userLoginFragment_to_drawerHostFragment"
             app:destination="@id/drawerHostFragment"
+            app:enterAnim="@android:anim/slide_in_left"
             app:popUpTo="@id/userLoginFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_userLoginFragment_to_userRegistrationFragment"
-            app:destination="@id/userRegistrationFragment" />
+            app:destination="@id/userRegistrationFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/drawerHostFragment"
@@ -29,6 +32,7 @@
         <action
             android:id="@+id/action_drawerHostFragment_to_userLoginFragment"
             app:destination="@id/userLoginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
             app:popUpTo="@id/drawerHostFragment" />
         <action
             android:id="@+id/action_drawerHostFragment_to_userSignOutDialogFragment"
@@ -38,7 +42,8 @@
             app:destination="@id/gameMainFragment" />
         <action
             android:id="@+id/action_drawerHostFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:popEnterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/playersEntryFragment"
@@ -47,6 +52,8 @@
         <action
             android:id="@+id/action_playersEntryFragment_to_gameMainFragment"
             app:destination="@id/gameMainFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
             app:popUpTo="@id/playersEntryFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -63,6 +70,11 @@
         <argument
             android:name="first_dealer"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_gameMainFragment_to_confirmationDialog"
+            app:destination="@id/confirmationDialog"
+            app:popUpTo="@id/gameMainFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <dialog
         android:id="@+id/newGameRoundDialogFragment"
@@ -99,7 +111,9 @@
         android:label="UserRegistrationFragment" >
         <action
             android:id="@+id/action_userRegistrationFragment_to_userLoginFragment"
-            app:destination="@id/userLoginFragment" />
+            app:destination="@id/userLoginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <dialog
         android:id="@+id/userSignOutDialogFragment"
@@ -144,5 +158,9 @@
             app:popUpTo="@id/drawerHostFragment"
             app:popUpToInclusive="false" />
     </dialog>
+    <dialog
+        android:id="@+id/confirmationDialog"
+        android:name="com.example.belablok.ConfirmationDialog"
+        android:label="ConfirmationDialog" />
 
 </navigation>
