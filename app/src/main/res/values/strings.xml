@@ -33,5 +33,6 @@
     <string name="_20">+20</string>
     <string name="_20_minus">-20</string>
     <string name="posts_page">Naslovnica</string>
+    <string name="confirmation_desc">Jeste li sigurni da želite napustiti igru? Izlaskom iz igre gubite podatke o trenutnoj igri.</string>
 
 </resources>

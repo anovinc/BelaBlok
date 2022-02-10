@@ -1,9 +1,11 @@
 package com.example.belablok.ui.game
 
+import android.media.SoundPool
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,6 +39,14 @@ class GameMainFragment : BaseFragment<FragmentGameMainBinding>() {
         initListeners()
         observeGameRounds()
         observeGameViewState()
+        requireActivity().onBackPressedDispatcher.addCallback(this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_gameMainFragment_to_confirmationDialog)
+                }
+
+
+            })
 
     }
 
@@ -52,14 +62,18 @@ class GameMainFragment : BaseFragment<FragmentGameMainBinding>() {
         with(binding) {
             btnNewRound.onClick { addNewGameRound() }
             tvFirstTeamWins.onClick {
-                Toast.makeText(context,
+                Toast.makeText(
+                    context,
                     "Broj pobjeda MI tima",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             tvSecondTeamWins.onClick {
-                Toast.makeText(context,
+                Toast.makeText(
+                    context,
                     "Broj pobjeda VI tima",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -69,7 +83,6 @@ class GameMainFragment : BaseFragment<FragmentGameMainBinding>() {
             gameRoundListAdapter.refreshData(gameRoundList)
             if (gameRoundList.isEmpty()) viewmodel.setCurrentDealer()
             else if (gameRoundList.size + 1 != viewmodel.listSize) viewmodel.changeCurrentDealer()
-            //Log.i("lista", "observeGameRounds: "+PrefsManager().getList() + "\n" + PrefsManager().getDealer()+"\n" + PrefsManager().getFirstTeamWins() +"   "+ PrefsManager().getSecondTeamWins())
             with(binding) {
                 if (viewmodel.hasGameEnded(getGameEndCount())) goToEndGameScreen()
 
@@ -100,7 +113,8 @@ class GameMainFragment : BaseFragment<FragmentGameMainBinding>() {
         val action =
             NewGameRoundDialogFragmentDirections.actionNewGameRoundDialogFragmentToGameEndFragment(
                 viewmodel.getFirstTeamTotalScore(),
-                viewmodel.getSecondTeamTotalScore())
+                viewmodel.getSecondTeamTotalScore()
+            )
         findNavController().navigate(action)
         viewmodel.checkWinner()
     }
@@ -110,7 +124,6 @@ class GameMainFragment : BaseFragment<FragmentGameMainBinding>() {
             GameMainFragmentDirections.actionGameMainFragmentToNewGameRoundDialogFragment(gameRound.id)
         findNavController().navigate(action)
     }
-
 
 
 }

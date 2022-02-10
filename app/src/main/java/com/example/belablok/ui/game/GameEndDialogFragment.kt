@@ -1,5 +1,7 @@
 package com.example.belablok.ui.game
 
+import android.media.AudioManager
+import android.media.SoundPool
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,7 @@ import com.example.belablok.ui.viewmodels.GameEndViewModel
 import org.koin.android.ext.android.inject
 
 class GameEndDialogFragment : DialogFragment() {
+
     private val viewmodel: GameEndViewModel by inject()
     private lateinit var binding: DialogFragmentGameEndBinding
     private val args: GameEndDialogFragmentArgs by navArgs()
@@ -26,6 +29,8 @@ class GameEndDialogFragment : DialogFragment() {
         binding = DialogFragmentGameEndBinding.inflate(inflater, container, false)
         return binding?.root
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
